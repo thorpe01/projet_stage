@@ -1,11 +1,13 @@
 import React from "react";
 
-const FileUploader = () => {
-    let file
-    const handleFileInput = (event) => {
-        file = event.target.files[0];
-        console.log(file);
-        console.log(JSON.stringify(file));
+const FileUploader = (props) => {
+
+const handleFileInput = (event) => {
+        let file = event.target.files[0];
+
+        var fileReader = new FileReader();
+        fileReader.onload = function (event) { props.data =  JSON.parse(event.target.result) };
+        fileReader.readAsText(file);
     };
 
     return (
