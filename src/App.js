@@ -1,7 +1,6 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import FileUploader from './components/FileUploader';
-import axios from 'axios';
 
 function App() {
 
