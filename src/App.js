@@ -10,7 +10,6 @@ function App() {
         <h1>App-Tab</h1>
         <div>
           <FileUploader setData={setData}/>
-          <p>{data}</p>
         </div>
       </div>
     );

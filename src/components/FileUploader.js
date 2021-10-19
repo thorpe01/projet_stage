@@ -6,7 +6,7 @@ const FileUploader = ({setData}) => {
             let file = event.target.files[0];
 
             var fileReader = new FileReader();
-            fileReader.onload = function (event) {setData(event.target.result)};
+            fileReader.onload = function (event) {setData(JSON.parse(event.target.result))};
             fileReader.readAsText(file);
     };
 
