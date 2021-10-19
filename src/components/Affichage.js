@@ -9,6 +9,7 @@ class Affichage extends Component {
             this.getKeys = this.getKeys.bind(this); 
         }
 
+    // transformer les cles en nom de colonne et les afficher    
     getHeader = function() {
         var keys = this.getKeys();
 
@@ -17,10 +18,12 @@ class Affichage extends Component {
             })
     }
 
+    // recuperer les cles du tableau dans le state
     getKeys = function() {
         return Object.keys(this.props.data[0]); 
     }
 
+    // creer les lignes pour chaque element (items) du tableau puis passer les cles au RenderRow
     getRowsData = function() {
         var items = this.props.data
         var keys = this.getKeys()
@@ -46,6 +49,7 @@ class Affichage extends Component {
     }
 }
 
+// le RenderRow retourne les valeurs associes aux cles 
 const RenderRow = (props) => {
     return props.keys.map((key, index) => {
         return <td key={props.data[key]}>{props.data[key]}</td>
