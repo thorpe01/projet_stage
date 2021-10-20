@@ -1,34 +1,19 @@
-import React, { Fragment } from "react";
-import Affichage from "./components/Affichage";
+import './App.css';
+import React, {useState} from 'react';
+import FileUploader from './components/FileUploader';
 
-const App = () => {
-
-  // tableau JSON contenu dans le state
-  const state = [
-    {
-        colonne1: 'premiere ligne',
-        colonne2: 'colonne2'
-    },
-    {
-        colonne1: 'deuxieme ligne',
-        colonne2: 'colonne2'
-    },
-    {
-        colonne1: 'troisieme ligne',
-        colonne2: 'colonne2'
-    },
-    {
-        colonne1: 'quatrieme ligne',
-        colonne2: 'colonne2'
-    }
-  ]
+function App() {
+  const [data, setData] = useState(null);
 
     return (
-      <Fragment>
-        <Affichage data={state} />
-      </Fragment>
+      <div className="App container">
+        <h1>App-Tab</h1>
+        <div>
+          <FileUploader setData={setData}/>
+        </div>
+      </div>
     );
-  
 }
+
 
 export default App;
