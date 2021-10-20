@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 import FileUploader from './components/FileUploader';
+import Affichage from './components/Affichage'
 
 function App() {
   const [data, setData] = useState(null);
@@ -11,6 +12,7 @@ function App() {
         <div>
           <FileUploader setData={setData}/>
         </div>
+        <Affichage data={data} />
       </div>
     );
 }
