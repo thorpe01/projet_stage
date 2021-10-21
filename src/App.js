@@ -9,6 +9,7 @@ function App() {
       <h1>App-Tab</h1>
       <div>
         <Home />
+        {JSON.stringify(JSON.parse(localStorage.getItem("data")))}
       </div>
     </div>
     );

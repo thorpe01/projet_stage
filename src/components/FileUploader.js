@@ -21,13 +21,13 @@ function FileUploader(event){
                 }
                 result.push(obj);
             }
-            localStorage.setItem("data", JSON.parse(JSON.stringify(result)));
+            localStorage.setItem("data", result);
         };
         fileReader.readAsText(file);
     }
 
     if (extension === 'json'){
-        fileReader.onload = function (event) {localStorage.setItem("data", JSON.parse(event.target.result))};
+        fileReader.onload = function (event) {localStorage.setItem("data", event.target.result)};
         fileReader.readAsText(file);
     } 
 

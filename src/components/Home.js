@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import FileUploader from './FileUploader';
 
 class Home extends Component {
-    state = {
-        data:null
-    }
 
     render () {
         return (
