@@ -12,8 +12,8 @@ function App() {
       <h1>App-Tab</h1>
       <div>
         <Home />
-        <Search details={initialDetails}/>
-        {/* {JSON.stringify(JSON.parse(localStorage.getItem("data")))} */}
+        <Search />
+       
       </div>
     </div>
     );

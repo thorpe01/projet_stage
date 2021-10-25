@@ -2,21 +2,20 @@ import React, { useState } from 'react';
 import Scroll from './Scroll';
 import SearchList from './SearchList';
 
-function Search({ details }) {
+function Search() {
 
   const [searchField, setSearchField] = useState("");
+  const[datas ,setDatas]=useState(null);
+  setDatas(JSON.parse(localStorage.getItem('data')))
 
-  const filteredPersons = details.filter(
+  const filteredPersons = datas.filter(
     person => {
       return (
         person
         .name
         .toLowerCase()
-        .includes(searchField.toLowerCase()) ||
-        person
-        .email
-        .toLowerCase()
         .includes(searchField.toLowerCase())
+       
       );
     }
   );

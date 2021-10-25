@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FileUploader from './FileUploader';
 import Affichage from './Affichage';
+import Search from './Search';
 
 class Home extends Component {
 
@@ -30,6 +31,7 @@ class Home extends Component {
                     <div className="file-uploader col-10 mt-5 d-flex">
                         <input type="file" className="form-control rounded-pill col-10" accept=".json, .csv" onChange={FileUploader}/>
                         <input type="submit" className="ms-5 btn btn-secondary rounded-pill col-2" onClick={this.handleClick}/>
+                        <input type="file" className="form-control rounded-pill col-10"  onChange={Search}/>
                     </div>
                 </div>
                 {this.Afficher()}
