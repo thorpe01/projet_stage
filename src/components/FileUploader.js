@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function FileUploader(event){
 
     let file = event.target.files[0];
@@ -20,6 +18,7 @@ function FileUploader(event){
                     obj[headers[j]] = currentLine[j];
                 }
                 result.push(obj);
+                console.log(obj);
             }
             localStorage.setItem("data", result);
         };
