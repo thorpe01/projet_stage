@@ -5,8 +5,9 @@ function Search(keyWord, data){
     const searchResult = []
 
     // Algorithme de comparaison et enregistrement des lignes validés dans le tableau 
+    // git Change : changement de la fonction dans la condition
     for (let index = 0; index < data.length; index++) {
-        if (keyWord.toUpperCase() === data[index].nom.toUpperCase()) {
+        if (data[index].nom.includes(keyWord)) {
             searchResult.push(data[index])
         }
 
