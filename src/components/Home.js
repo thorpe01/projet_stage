@@ -5,17 +5,18 @@ import Search from './Search'
 
 class Home extends Component {
 
+    // git Refactor : motCle -> keyWord, resultats -> results_tab
     state = {
         'data': JSON.parse(localStorage.getItem("data")),
-        'motCle': '',
-        'resultats': []
+        'keyWord': '',
+        'results_tab': []
     }
 
     // git Change : condition d'affichage en fonction de la contenance de resultats
     Afficher() {
         if (this.state.data) {
-            if (this.state.resultats.length > 0) {
-                return <Affichage data={this.state.resultats} />
+            if (this.state.results_tab.length > 0) {
+                return <Affichage data={this.state.results_tab} />
             } else {
                 return <Affichage data={this.state.data} />
             }
@@ -24,15 +25,19 @@ class Home extends Component {
         }
     }
 
+    // git Add commentary : Rechargement de page
     handleClick = () => {
         window.location.reload();
     }
 
+    // git Add commentary : Integre le mot cle inscrit par l'utilisateur et l'enregistre dans le state a la cle "keyWord"
+    //                      Envoi le keyWord a la fonction/composant Search et retourne un tableau filtré
+    //                      Inscrit le tableau filtré results dans le state a la clé "results_tab"
+    //                      Appelle la fonction Afficher pour mettre a jour l'affichage avec le nouveau tableau de resutat results_tab
     handleChange = event => {
-        this.setState({'motCle': event.target.value})
-        const resultats = Search(this.state.motCle, this.state.data)
-        console.log(resultats)
-        this.setState({'resultats': resultats})
+        this.setState({'keyWord': event.target.value})
+        const results = Search(this.state.keyWord, this.state.data)
+        this.setState({'results_tab': results})
         this.Afficher()
     }
 
