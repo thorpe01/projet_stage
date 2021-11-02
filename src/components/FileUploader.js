@@ -7,6 +7,12 @@ function FileUploader(event){
     if (extension ==="csv"){
         fileReader.onload = function (file) {
             let lines = file.target.result.split("\n");
+            lines.pop();
+            
+            for (let i=0; i < lines.length; i++){
+                lines[i] = lines[i].split("\r")[0]
+            };
+
             let result = [];
             let headers = lines[0].split(";");
     
@@ -19,7 +25,7 @@ function FileUploader(event){
                 }
                 result.push(obj);
             }
-            localStorage.setItem("data", result);
+            localStorage.setItem("data", JSON.stringify(result));
         };
         fileReader.readAsText(file);
     }
