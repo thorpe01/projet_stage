@@ -1,18 +1,21 @@
 import './App.css';
 import React from 'react';
+// import Datalist from './components/datalist.js/index';
+// import INPUT from './components/datalist.js/input';
 import Home from './components/Home';
 
 
-function App() {
 
-  
+
+function App(){
 
   return (
     <div className="App container">
+      <div className="style">
       <h1>App-Tab</h1>
-      <div>
-        <Home />
-        {/* {JSON.stringify(JSON.parse(localStorage.getItem("data")))} */}
+      </div>
+      <div >
+<Home/>
       </div>
     </div>
     );

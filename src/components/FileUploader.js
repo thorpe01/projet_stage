@@ -40,6 +40,8 @@ function FileUploader(event){
         alert("format inconnu, veuillez inserer un JSON ou un CSV");
     }
 
+    
+
 };
 
 export default FileUploader;

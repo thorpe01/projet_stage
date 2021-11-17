@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FileUploader from './FileUploader';
 import Affichage from './Affichage';
 import Search from './Search'
+import axios from 'axios';
 
 class Home extends Component {
 
@@ -10,6 +11,7 @@ class Home extends Component {
         'data': JSON.parse(localStorage.getItem("data")),
         'keyWord': '',
         'results_tab': []
+        
     }
 
     // git Change : condition d'affichage en fonction de la contenance de resultats
@@ -24,6 +26,7 @@ class Home extends Component {
             return null
         }
     }
+
 
     // git Add commentary : Rechargement de page
     handleClick = () => {
@@ -41,17 +44,38 @@ class Home extends Component {
         this.Afficher()
     }
 
+
+    handleSubmit= e =>{
+        e.preventdDefault();
+        axios.post('http://localhost:5500/',{data : this.state.data})
+        .then(res=>{
+            console.log('ici le post ',res);
+            console.log(res.data);
+          
+        })
+      };
+    
     render () {
 
         return (
             <div>
+               
                 <div className="Home">
-                    <div className="file-uploader col-10 mt-5 d-flex">
-                        <input type="file" className="form-control rounded-pill col-10" accept=".json, .csv" onChange={FileUploader}/>
-                        <input type="submit" className="ms-5 btn btn-secondary rounded-pill col-2" onClick={this.handleClick}/>
+
+                  <form onSubmit={this.handleSubmit}>
+                        <div className="file-uploader col-10 mt-5 d-flex">
+                            <input type="file" className="form-control rounded-pill col-10" accept=".json, .csv" onChange={FileUploader}/>
+                            <input type="submit" className="ms-1 btn btn-secondary rounded-pill col-2" onClick={this.handleClick}/>
+                        </div>
+                    </form>
+
+
+                    <div className="file-uploader col-10 mt-5 d-flex mb-5">
+                        <input type="search" className="  form-control rounded-pill " placeholder="Rechercher" onChange={this.handleChange}/>
+                        <input type="submit" className=" ms-1 btn btn-primary rounded-pill col-2" onClick={this.handleChange}/>
                     </div>
-                    <input type="search" className="mt-3 form-control rounded-pill " placeholder="Rechercher" onChange={this.handleChange}/>
                 </div>
+                
                 {this.Afficher()}
             </div>
         )
